@@ -59,7 +59,7 @@ function Login({ setIsLoggedIn }) {
       });
       if (response.status === 200) {
         // Show toast notification for successful login
-        toast.success('Login successful!');
+        toast.success('Otp verified Login successful!');
         // Delay redirecting for 3 seconds
         setTimeout(() => {
           // Redirect to the dashboard or desired page after successful OTP verification
