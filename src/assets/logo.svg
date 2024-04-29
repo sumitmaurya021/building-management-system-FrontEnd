@@ -1,0 +1,19 @@
+<svg width="120" height="200" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Building -->
+    <rect x="20" y="50" width="80" height="120" fill="#E6E6E6"/>
+    <!-- Windows -->
+    <!-- First Floor -->
+    <rect x="30" y="60" width="20" height="20" fill="#99CCFF"/>
+    <rect x="60" y="60" width="20" height="20" fill="#99CCFF"/>
+    <rect x="90" y="60" width="20" height="20" fill="#99CCFF"/>
+    <!-- Second Floor -->
+    <rect x="30" y="90" width="20" height="20" fill="#99CCFF"/>
+    <rect x="60" y="90" width="20" height="20" fill="#99CCFF"/>
+    <rect x="90" y="90" width="20" height="20" fill="#99CCFF"/>
+    <!-- Third Floor -->
+    <rect x="30" y="120" width="20" height="20" fill="#99CCFF"/>
+    <rect x="60" y="120" width="20" height="20" fill="#99CCFF"/>
+    <rect x="90" y="120" width="20" height="20" fill="#99CCFF"/>
+    <!-- Roof -->
+    <polygon points="20,50 100,50 70,20 50,20 20,50" fill="#B35900"/>
+</svg>

@@ -7,3 +7,54 @@
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
+
+:root {
+  /* Colors */
+  --black: #09090c;
+  --grey: #a4b2bc;
+  --white: #fff;
+  --background: rgba(137, 171, 245, 0.37);
+}
+.gqAltJ{
+  top: 4rem !important;
+}
+.jOkuLa{
+  top: 4rem !important;
+}
+.hdSQYZ{
+  height: 90vh !important;
+}
+.gSoNdm{
+  top: 0rem !important;
+}
+.jpTSqt{
+  top: 0rem !important;
+}
+.hdSQYZ{
+  flex-flow: column-reverse !important;
+}
+.hcHFfk{
+  z-index: 9999;
+}
+.pfoKl{
+  z-index: 9999;
+}
+.userlinecss{
+  position: relative;
+  cursor: pointer;
+}
+.userlinecss::after{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background: white;
+  display: flex;
+  bottom: -5px;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.userlinecss:hover::after{
+  width: 100%;
+}

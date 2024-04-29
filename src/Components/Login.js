@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link, Link as RouterLink, useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify'; // Importing react-toastify
 import 'react-toastify/dist/ReactToastify.css';
 
 function Login({ setIsLoggedIn }) {
@@ -25,7 +22,7 @@ function Login({ setIsLoggedIn }) {
   const [otp, setOTP] = useState('');
   const navigate = useNavigate();
 
-  const handleLoginSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/api/v1/login', {
@@ -34,16 +31,15 @@ function Login({ setIsLoggedIn }) {
           password
         }
       });
-      if (response.status === 200) {
+      if (response && response.data && response.status === 200) {
         // If login is successful, set OTP sent state to true
         setOTPSent(true);
-        // Store user email
-        setEmail(response.data.email);
-        // Show toast notification for OTP sent
-        toast.info(`OTP sent to ${response.data.email}`);
+        // Show toast notification for email sent
+        toast.info(`Email sent to ${email}`); // Corrected toast function call
       }
     } catch (error) {
-      setErrorMessage(error.response.data.error);
+      setErrorMessage(error.response?.data?.error || 'An error occurred');
+      toast.error(errorMessage);
     }
   };
 
@@ -57,32 +53,28 @@ function Login({ setIsLoggedIn }) {
         },
         client_id: 'aXfs_AWE1Gg-XkCiZ8LkY1xnZ3YNQSrvO18xfwVE8is'
       });
-      if (response.status === 200) {
-        // Show toast notification for successful login
-        toast.success('Otp verified Login successful!');
-        // Delay redirecting for 3 seconds
+      if (response && response.data && response.status === 200) {
+        // Store access token in local storage
+        localStorage.setItem('access_token', response.data.user.access_token);
+        // Show toast notification for OTP verification
+        toast.success('Email verified successfully!');
+        // Set isLoggedIn to true to show the sidebar
+        setIsLoggedIn(true);
         setTimeout(() => {
-          // Redirect to the dashboard or desired page after successful OTP verification
-          setIsLoggedIn(true);
           navigate('/');
         }, 2000);
       }
     } catch (error) {
-      setErrorMessage(error.response.data.error);
+      console.error('Error while verifying OTP:', error);
+      toast.error('An error occurred while verifying OTP. Please try again later.');
     }
   };
-  
-  
 
   return (
     <ThemeProvider theme={createTheme()}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
+        <Grid item xs={false} sm={4} md={7}
           sx={{
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
@@ -108,7 +100,7 @@ function Login({ setIsLoggedIn }) {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={otpSent ? handleOTPSubmit : handleLoginSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={otpSent ? handleOTPSubmit : handleSubmit} sx={{ mt: 1 }}>
               {!otpSent ? (
                 <>
                   <TextField
@@ -145,7 +137,7 @@ function Login({ setIsLoggedIn }) {
                   </Button>
                   <Grid container>
                     <Grid item xs>
-                      <Link href="#" variant="body2">
+                      <Link component={RouterLink} to="/forgot-password" variant="body2">
                         Forgot password?
                       </Link>
                     </Grid>
@@ -184,7 +176,6 @@ function Login({ setIsLoggedIn }) {
           </Box>
         </Grid>
       </Grid>
-      {/* Toast container for notifications */}
       <ToastContainer />
     </ThemeProvider>
   );
