@@ -32,11 +32,13 @@ function BuildingInfo() {
     
       return (
         <div>
+          <div className="d-flex justify-content-end align-items-center gap-5 p-4 bg-black text-white">
             {buildings.map((building) => (
-                <div key={building._id} className="d-flex justify-content-end align-items-center gap-5 p-4 bg-black text-white">
-                    <h5 className="p-0 m-0 font-monospace userlinecss">{building.building_name}</h5>
+                <div key={building.id}>
+                  <h5 className="p-0 m-0 font-monospace userlinecss">{building.building_name}</h5>
                 </div>
-            ))}
+                  ))}
+              </div>
         </div>
       );
 }

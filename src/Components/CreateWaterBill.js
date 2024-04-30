@@ -51,7 +51,7 @@ function CreateWaterBill() {
     <div>
         <div>
             <BuildingInfo />
-            <div className="createmaincss">
+        <div className="createmaincss ms-5">
         <Typography variant="h6" gutterBottom>Create Water Bill</Typography>
         <TextField
           name="your_name"

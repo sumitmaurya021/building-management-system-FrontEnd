@@ -52,7 +52,7 @@ function CreateMaintanenceBill() {
       <div>
         <BuildingInfo />
       </div>
-      <div className="createmaincss">
+      <div className="createmaincss ms-5">
         <Typography variant="h6" gutterBottom>Create Maintenance Bill</Typography>
         <TextField
           name="your_name"
