@@ -26,6 +26,7 @@ body {
 }
 .gSoNdm{
   top: 0rem !important;
+  border-radius: 0 0px 0px 0 !important;
 }
 .jpTSqt{
   top: 0rem !important;
@@ -57,4 +58,8 @@ body {
 
 .userlinecss:hover::after{
   width: 100%;
+}
+.createmaincss{
+  padding: 20px;
+  width: 90% !important;
 }

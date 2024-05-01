@@ -9,7 +9,8 @@ import Sidebar from './Components/Sidebar';
 import ForgotPassword from './Components/ForgotPassword';
 import CreateMaintanenceBill from './Components/CreateMaintanenceBill';
 import CreateWaterBill from './Components/CreateWaterBill';
-import BuildingInfo from './Components/BuildingInfo';
+import ShowMaintanenceBill from './Components/ShowMaintanenceBill';
+import ShowWaterBill from './Components/ShowWaterBill';
 
 
 function App() {
@@ -37,11 +38,11 @@ function Main({ setIsLoggedIn, isLoggedIn }) {
 
   return (
     <>  
-      <div className='row m-auto g-0'>
-        <div className='col-md-1 bg-black'>
+      <div  className={isLoggedIn? 'row m-auto g-0 d-block' : 'd-none'}>
+        <div className='col-md-2 col-xl-2'>
           {isLoggedIn && <Sidebar />}
         </div>
-        <div className='col-md-11'>
+        <div className='col-md-12 col-xl-12'>
         <AnimatePresence>
               <Routes location={location}>
                 <Route path="/" element={<Home />} />
@@ -50,6 +51,8 @@ function Main({ setIsLoggedIn, isLoggedIn }) {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/CreateMaintenanceBill" element={ <CreateMaintanenceBill /> } />
                 <Route path="/CreateWatereBill" element={ <CreateWaterBill /> } />
+                <Route path="/ShowMaintanenceBill" element={ <ShowMaintanenceBill /> }/>
+                <Route path="/ShowWaterBill" element={ <ShowWaterBill /> }/>
               </Routes>
             </AnimatePresence>
         </div>
@@ -57,5 +60,4 @@ function Main({ setIsLoggedIn, isLoggedIn }) {
     </>
   );
 }
-
 export default App;

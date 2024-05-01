@@ -260,7 +260,7 @@ function Sidebar() {
             <SlickBar clicked={click}>
               <Item onClick={() => setClick(false)} exact activeClassName="active" to="/">
                 <img src={Home} alt="Home" />
-                <Text clicked={click}>Home</Text>
+                <Text clicked={click}>Dashboard</Text>
               </Item>
               <Item onClick={() => setClick(false)} to="/CreateMaintenanceBill" activeClassName="active">
                 <img src={Team} alt="CreateMainBill" />
@@ -270,13 +270,13 @@ function Sidebar() {
                 <img src={Calender} alt="CreateWaterBill" />
                 <Text clicked={click}>CreateWaterBill</Text>
               </Item>
-              <Item onClick={() => setClick(false)} to="/documents" activeClassName="active">
+              <Item onClick={() => setClick(false)} to="/ShowMaintanenceBill" activeClassName="active">
                 <img src={Documents} alt="" />
-                <Text clicked={click}>Documents</Text>
+                <Text clicked={click}>ShowMainBill</Text>
               </Item>
-              <Item onClick={() => setClick(false)} to="/projects" activeClassName="active">
+              <Item onClick={() => setClick(false)} to="/ShowWaterBill" activeClassName="active">
                 <img src={Projects} alt="Projects" />
-                <Text clicked={click}>Projects</Text>
+                <Text clicked={click}>ShowWaterBill</Text>
               </Item>
             </SlickBar>
             {/* Profile */}
